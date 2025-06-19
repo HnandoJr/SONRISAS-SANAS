@@ -278,6 +278,126 @@ main section h2 {
     filter: brightness(1.1); /* Slightly brighter */
 }
 
+/* Product Card Flip Effect Styling */
+.product-item {
+    perspective: 1000px; /* Needed for 3D flip effect */
+    /* The original .product-item styles (width, padding, etc.) will define its dimensions.
+       Background and border from original .product-item will be the default state if not overridden
+       or if the .product-front doesn't cover it initially (e.g. if it had transparency).
+       For this effect, we assume .product-front and .product-back will fully style the appearance.
+       The original .product-item's background and border will be overridden by .product-front.
+       So, we can leave the original .product-item styles as they are for width, margin, etc.
+       but ensure its direct background/border don't interfere if .product-card-inner is meant
+       to be the sole visual component.
+       It's often cleaner to make .product-item a layout container and style .product-front/.product-back.
+    */
+}
+
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px; /* Match this to your content or set a fixed height for all cards */
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 8px;
+}
+
+/* Class added by JS to trigger flip */
+.product-item.is-flipped .product-card-inner {
+    transform: rotateY(180deg);
+}
+
+.product-front, .product-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.product-front {
+    background-color: #1a1a3d;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-front img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #2a2a4d;
+}
+
+.product-front h3 {
+    color: #ff00ff;
+    font-size: 1.3em;
+    margin-bottom: 8px;
+}
+
+.product-front .price {
+    color: #00ffcc;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.product-front .details-button,
+.product-back .back-button {
+    background-color: #ff00ff;
+    color: #0a0a1f;
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.product-front .details-button:hover,
+.product-back .back-button:hover {
+    background-color: #00ffcc;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+.product-back {
+    background-color: #2a2a4d;
+    border: 1px solid #ff00ff;
+    color: #e0e0ff;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.product-back h4 {
+    color: #00ffcc;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.product-back p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    text-align: left;
+}
+
 /* Offers section specific styling */
 #ofertas h2 {
     color: #f0ff00; /* Neon Yellow for offers title */
@@ -869,4 +989,52 @@ footer {
 #chatbot-placeholder:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* Styling for .product-back content */
+.product-back {
+    transform: rotateY(180deg); /* Already set, but good to keep context */
+    padding: 15px;
+    color: #c0c0f0; /* Light lavender text, similar to blog text */
+    display: flex; /* For centering content if needed, or structuring */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to bottom if not much content */
+    height: 100%; /* Ensure it takes full height of card for layout */
+    box-sizing: border-box; /* Include padding in height/width */
+}
+
+.product-back h4 {
+    color: #00ffcc; /* Neon Cyan for title on back */
+    font-size: 1.2em;
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 10px;
+    text-shadow: 0 0 3px #00ffcc;
+}
+
+.product-back p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    flex-grow: 1; /* Allows paragraphs to take available space if content is short */
+}
+
+.product-back .back-button {
+    background-color: #00ffcc; /* Neon Cyan */
+    color: #0a0a1f; /* Dark background color for text */
+    border: none;
+    padding: 8px 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px; /* Space above the button */
+    align-self: center; /* Center button if flex is used */
+}
+
+.product-back .back-button:hover {
+    background-color: #ff00ff; /* Neon Pink on hover */
+    color: #FFF; /* White text on pink hover */
+    box-shadow: 0 0 10px #ff00ff;
 }
