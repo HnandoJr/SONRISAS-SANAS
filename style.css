@@ -1,0 +1,143 @@
+/* style.css */
+
+/* --- Estilos Generales --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6; /* Un gris muy claro para el fondo */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+/* --- Encabezado --- */
+header {
+    background-color: #0056b3; /* Azul primario */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 4px solid #004080; /* Un azul más oscuro para el borde */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* --- Contenedor del Formulario --- */
+.form-container {
+    padding-right: 20px;
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #eef;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- Grupos de Formulario y Etiquetas --- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* --- Botón de Envío --- */
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+    background-color: #004080; /* Azul más oscuro al pasar el ratón */
+}
+
+/* --- Contenedor de la Lista --- */
+.list-container {
+    border-left: 1px solid #ddd;
+    padding-left: 40px;
+}
+
+/* --- Estilos de la Tabla (para más adelante) --- */
+#lista-pacientes table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#lista-pacientes th, #lista-pacientes td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#lista-pacientes th {
+    background-color: #eef; /* Azul muy claro para cabeceras de tabla */
+    color: #0056b3;
+}
+
+#lista-pacientes tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#lista-pacientes tr:hover {
+    background-color: #f1f1f1;
+}
+
+#lista-pacientes .actions a {
+    color: #0056b3;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+#lista-pacientes .actions a:hover {
+    text-decoration: underline;
+}
+
+#lista-pacientes .actions a.delete {
+    color: #d9534f; /* Color rojo para la acción de eliminar */
+}
