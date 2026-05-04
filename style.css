@@ -1,143 +1,253 @@
 /* style.css */
 
-/* --- Estilos Generales --- */
+/* --- Variables y Configuración Base --- */
+:root {
+    --primary-color: #0056b3;
+    --primary-dark: #004080;
+    --secondary-color: #f4f7f6;
+    --text-color: #333;
+    --text-light: #666;
+    --white: #ffffff;
+    --border-color: #ddd;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --info-color: #17a2b8;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6; /* Un gris muy claro para el fondo */
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.6;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-}
-
 /* --- Encabezado --- */
 header {
-    background-color: #0056b3; /* Azul primario */
-    color: #fff;
-    padding: 20px 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 2rem 1rem;
     text-align: center;
-    border-bottom: 4px solid #004080; /* Un azul más oscuro para el borde */
+    box-shadow: var(--shadow);
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.5rem;
+    font-weight: 300;
 }
 
-/* --- Contenedor del Formulario --- */
-.form-container {
-    padding-right: 20px;
+/* --- Contenedor Principal --- */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .container {
+        grid-template-columns: 350px 1fr;
+    }
+}
+
+/* --- Paneles --- */
+.card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
 }
 
 h2 {
-    color: #0056b3;
-    border-bottom: 2px solid #eef;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
 }
 
-/* --- Grupos de Formulario y Etiquetas --- */
+/* --- Formularios --- */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.9rem;
 }
 
-.form-group input[type="text"],
-.form-group input[type="tel"],
-.form-group input[type="date"],
-.form-group input[type="number"] {
+.form-group input,
+.form-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    transition: border-color 0.3s;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus {
-    border-color: #0056b3;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.1);
     outline: none;
 }
 
-/* --- Botón de Envío --- */
-.form-group button {
+.btn {
+    display: inline-block;
     width: 100%;
-    padding: 12px;
-    background-color: #0056b3;
-    color: white;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--white);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
     transition: background-color 0.3s;
 }
 
-.form-group button:hover {
-    background-color: #004080; /* Azul más oscuro al pasar el ratón */
+.btn:hover {
+    background-color: var(--primary-dark);
 }
 
-/* --- Contenedor de la Lista --- */
-.list-container {
-    border-left: 1px solid #ddd;
-    padding-left: 40px;
+.btn-secondary {
+    background-color: var(--text-light);
 }
 
-/* --- Estilos de la Tabla (para más adelante) --- */
-#lista-pacientes table {
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+/* --- Buscador --- */
+.search-container {
+    margin-bottom: 1.5rem;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* --- Tabla de Pacientes --- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
-#lista-pacientes th, #lista-pacientes td {
-    border: 1px solid #ddd;
-    padding: 12px;
+th, td {
+    padding: 1rem;
     text-align: left;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
-#lista-pacientes th {
-    background-color: #eef; /* Azul muy claro para cabeceras de tabla */
-    color: #0056b3;
+th {
+    background-color: #eef5ff;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
-#lista-pacientes tr:nth-child(even) {
-    background-color: #f9f9f9;
+tr:hover {
+    background-color: #f9fbff;
 }
 
-#lista-pacientes tr:hover {
-    background-color: #f1f1f1;
+.actions {
+    display: flex;
+    gap: 0.5rem;
 }
 
-#lista-pacientes .actions a {
-    color: #0056b3;
+.actions a {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
     text-decoration: none;
-    margin-right: 10px;
+    font-weight: 600;
 }
 
-#lista-pacientes .actions a:hover {
-    text-decoration: underline;
+.actions .edit {
+    background-color: #e7f1ff;
+    color: var(--primary-color);
 }
 
-#lista-pacientes .actions a.delete {
-    color: #d9534f; /* Color rojo para la acción de eliminar */
+.actions .delete {
+    background-color: #fff1f0;
+    color: var(--error-color);
+}
+
+.actions .edit:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.actions .delete:hover {
+    background-color: var(--error-color);
+    color: var(--white);
+}
+
+/* --- Notificaciones --- */
+#toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.toast {
+    background-color: var(--white);
+    color: var(--text-color);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+}
+
+.toast.success { border-left-color: var(--success-color); }
+.toast.error { border-left-color: var(--error-color); }
+.toast.info { border-left-color: var(--info-color); }
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* --- Estilos para Edición --- */
+.container-single {
+    max-width: 800px;
 }
